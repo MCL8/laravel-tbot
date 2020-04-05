@@ -26,3 +26,14 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+$factory->define(User::class, function (Faker $faker) {
+    return [
+        'name' => 'admin',
+        'email' => 'igoregrind842@gmail.com',
+        'email_verified_at' => now(),
+        'password' => bcrypt('123456'),
+        'remember_token' => Str::random(10),
+    ];
+});
+
