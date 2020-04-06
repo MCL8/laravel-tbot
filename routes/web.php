@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware(['auth'])->prefix('admin')->namespace('Backend')->name('admin')->group(function () {
+   Route::get('/', 'DashboardController@index')->name('index');
+});
+
 Auth::routes();
 
 Route::match(['post', 'get'], 'register', function() {
