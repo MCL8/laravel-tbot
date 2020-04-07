@@ -18,8 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth'])->prefix('admin')->namespace('Backend')->name('admin')->group(function () {
+Route::middleware(['auth'])->prefix('admin')->namespace('Backend')->name('admin.')->group(function () {
    Route::get('/', 'DashboardController@index')->name('index');
+
+   Route::get('/setting', 'SettingController@index')->name('setting.index');
+   Route::post('/setting/store', 'SettingController@store')->name('setting.store');
 });
 
 Auth::routes();

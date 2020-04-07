@@ -36,6 +36,9 @@
                         <li>
                             <a href="{{ route('admin.index') }}">Панель состояния</a>
                         </li>
+                        <li>
+                            <a href="{{ route('admin.setting.index') }}">Настройки</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
