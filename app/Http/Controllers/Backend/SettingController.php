@@ -15,7 +15,7 @@ class SettingController extends Controller
 
     public function store(Request $request)
     {
-        Settings::where('key', '!=', NULL)->delete();
+        Settings::where('key', '!=', null)->delete();
 
         foreach ($request->except('_token') as $key => $value) {
             $setting = new Settings;
@@ -25,5 +25,29 @@ class SettingController extends Controller
         }
 
         return redirect()->route('admin.setting.index');
+    }
+
+    public function setWebhook(Request $request)
+    {
+        $result = $this->sendTelegramData('setwebhook', [
+            'query' => ['url' => $request->url . '/' . \Telegram::getAccessToken()]
+        ]);
+
+        return redirect()->route('admin.setting.index')->with('status', $result);
+    }
+
+    public function getWebhookInfo(Request $request)
+    {
+        $result = $this->sendTelegramData('getWebhhokInfo');
+
+        return redirect()->route('admin.setting.index')->with('status', $result);
+    }
+
+    public function sendTelegramData($route = '', $params = [], $method = 'POST')
+    {
+        $client = new \GuzzleHttp\Client(['base_uri' => 'https://api.telegram.org/bot' . \Telegram::getAccessToken() . '/']);
+        $result = $client->request($method, $route, $params);
+
+        return (string)$result->getBody();
     }
 }
