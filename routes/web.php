@@ -27,6 +27,10 @@ Route::middleware(['auth'])->prefix('admin')->namespace('Backend')->name('admin.
     Route::post('setting/setwebhookinfo', 'SettingController@getWebhookInfo')->name('setting.getwebhookinfo');
 });
 
+Route::post(\Telegram::getAccessToken(), function() {
+   \Telegram::commandsHandler(true) ;
+});
+
 Auth::routes();
 
 Route::match(['post', 'get'], 'register', function() {
