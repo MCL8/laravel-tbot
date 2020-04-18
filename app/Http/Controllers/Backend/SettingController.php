@@ -38,7 +38,7 @@ class SettingController extends Controller
 
     public function getWebhookInfo(Request $request)
     {
-        $result = $this->sendTelegramData('getWebhhokInfo');
+        $result = $this->sendTelegramData('getWebhookInfo');
 
         return redirect()->route('admin.setting.index')->with('status', $result);
     }
