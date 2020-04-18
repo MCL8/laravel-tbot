@@ -27,14 +27,14 @@
             <button class="btn-primary" type="submit">Сохранить</button>
         </form>
 
-         <form id="setwebhook" action="{{ route('admin.setting.setwebhook') }}" method="POST" style="display: none">
-             {{ csrf_field() }}
-             <input type="hidden" name="url" value="{{ $url_callback_bot ?? '' }}">
-         </form>
+        <form id="setwebhook" action="{{ route('admin.setting.setwebhook') }}" method="POST" style="display: none">
+            {{ csrf_field() }}
+            <input type="hidden" name="url" value="{{ $url_callback_bot ?? '' }}">
+        </form>
 
-         <form id="getwebhookinfo" action="{{ route('admin.setting.getwebhookinfo') }}" method="POST" style="display: none">
-             {{ csrf_field() }}
-         </form>
+        <form id="getwebhookinfo" action="{{ route('admin.setting.getwebhookinfo') }}" method="POST" style="display: none">
+            {{ csrf_field() }}
+        </form>
 
     </div>
 
