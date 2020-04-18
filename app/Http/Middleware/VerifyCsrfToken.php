@@ -17,8 +17,7 @@ class VerifyCsrfToken extends Middleware
 
     public function __construct(\Illuminate\Contracts\Foundation\Application $app, \Illuminate\Contracts\Encryption\Encrypter $encrypter)
     {
-        $this->app = $app;
-        $this->encrypter = $encrypter;
-        $this->except[] = \Telegram::getAccesToken();
+        parent::__construct($app, $encrypter);
+        $this->except[] = \Telegram::getAccessToken();
     }
 }
